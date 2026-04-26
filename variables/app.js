@@ -18,3 +18,12 @@
 
          var $="Wassup"
          console.log($)
+
+
+
+
+
+        //  reserverd keyword
+
+        let let=14
+        console.log(let)
