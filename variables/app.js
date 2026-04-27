@@ -1,79 +1,80 @@
-  // soc-->separation of concern
-        var a=12
-        console.log(a)
-        let b="wasssssuppp"
-        console.log(b)
-        console.log(typeof(b))
-    //  variables cannot be starting from numbers
-    // like for ex
-    // its syntax error
-    // var 1="hola"
-    // console.log(1)
+// soc-->separation of concern
+var a = 12;
+console.log(a);
+let b = "wasssssuppp";
+console.log(b);
+console.log(typeof b);
+//  variables cannot be starting from numbers
+// like for ex
+// its syntax error
+// var 1="hola"
+// console.log(1)
 
+// naming convention can start from special chars like _,$
+let _ = 3;
+console.log(_);
 
+var $ = "Wassup";
+console.log($);
 
-        // naming convention can start from special chars like _,$
-         let _=3
-         console.log(_)
+//  reserverd keyword
 
-         var $="Wassup"
-         console.log($)
+// let let=14
+// console.log(let)
 
+// redeclarat and reassign
 
+// redeclare
+// only var
 
+var name = "reshu";
 
+console.log(name);
 
-        //  reserverd keyword
+var name = "riya";
 
-        // let let=14
-        // console.log(let)
+console.log(name);
 
+// reassign
+// let and const --> introduec in ES6
 
+let x = 14;
+console.log(x);
 
+// let x=true  //redeclare X
+console.log(x);
 
+// the error is Uncaught SyntaxError: Identifier 'x' has already been declared
 
-        // redeclarat and reassign
+// re assign
+x = true;
+console.log(x);
 
+// neither reassing nor redeclare
+// in case of const
+const z = 1;
+console.log(z);
+const z = 2;
+console.log(2);
 
-        // redeclare
-        // only var
+// error
+// SyntaxError: Identifier 'z' has already been declared
 
-        var name="reshu"
+// and cant reassing also
+z = true;
+console.log(z);
 
-        console.log(name)
+// const always needs to be initialized after declaraing
+// error-->
+// const a;
+// a=10
 
-        var name="riya"
+// but let and var doesnt need to initialize
 
-        console.log(name)
+// valid
+// let f
+// f=12
 
-        // reassign
-        // let and const --> introduec in ES6
-
-        let x=14
-        console.log(x)
-
-        // let x=true  //redeclare X
-        console.log(x)
-
-        // the error is Uncaught SyntaxError: Identifier 'x' has already been declared
-
-        // re assign
-        x=true
-        console.log(x)
-
-
-        // neither reassing nor redeclare
-        // in case of const
-        const z=1
-        console.log(z)
-        const z=2
-        console.log(2)
-
-        // error 
-        // SyntaxError: Identifier 'z' has already been declared
-
-
-        // and cant reassing also
-        z=true
-        console.log(z)
-        
+// also valid
+// var w
+// w=13
