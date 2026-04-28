@@ -67,6 +67,7 @@ app.post("/login", async (req, res) => {
     const token = jwt.sign({ email: email, userid: userSchema._id }, "secret");
     res.cookie("token", token);
     res.status(200).send("You can login");
+    // res.render("profile");
   } else {
     return res.status(500).send("Not ");
   }
@@ -81,28 +82,51 @@ app.get("/logout", (req, res) => {
 const isLoggedIn = (req, res, next) => {
   if (!req.cookies.token) {
     return res.send("You need to login");
-  } else {
+  } 
+  try {
     const data = jwt.verify(req.cookies.token, "secret");
     req.user = data;
+    console.log(req.user)
+    next();
+  }catch(err){
+    return res.send("Invalid or expired token");
   }
-  next();
 };
 // 
 
 // profile useing middleware
 app.get("/profile", isLoggedIn, async (req, res) => {
-  const user = await userSchema.findOne({ email: req.user.email }).populate("posts");
-  const {content} = req.body;
-  const post = await postSchema.create({
-    user:user._id,
-    content
-  });
-  
-  user.posts.push(post._id);
-  await user.save();
-  console.log(user);
-  res.render("profile",{data:user});
+  const user = await userSchema
+    .findOne({ email: req.user.email })
+    .populate("posts");
+
+  res.render("profile", { user });
 });
+
+// post the thingg
+app.post('/posts',isLoggedIn,async(req,res)=>{
+     const post=await postSchema.create({
+      user:user._id,
+       content:req.content
+     });
+     user.posts.push(post);
+     res.redirect("/profile");
+});
+
+
+// app.get("/profile", isLoggedIn, async (req, res) => {
+//   const user = await userSchema.findOne({ email: req.user.email }).populate("posts");
+//   const {content} = req.body;
+//   const post = await postSchema.create({
+//     user:user._id,
+//     content
+//   });
+  
+//   user.posts.push(post._id);
+//   await user.save();
+//   console.log(user);
+//   res.render("profile",{user});
+// });
 
 
 // likes
