@@ -87,7 +87,7 @@ const isLoggedIn = (req, res, next) => {
   }
   next();
 };
-
+// 
 
 // profile useing middleware
 app.get("/profile", isLoggedIn, async (req, res) => {
