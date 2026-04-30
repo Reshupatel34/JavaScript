@@ -4,9 +4,9 @@ import { fileURLToPath } from "url";import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
 import connectDb from './config/Db.js'; 
-import userModel from './Model/userModel.js';
-import productModel from './Model/productModel.js';
-import ownerModel from './Model/ownerModel.js';
+import userRoute from './Routes/userRoute.js';
+import productRoute from './Routes/productRoute.js';
+import ownerRoute from './Routes/ownerRoute.js';
 
 
 const app = express();
@@ -25,6 +25,18 @@ app.get('/',(req ,res)=>{
     res.send("WELCOME");
    console.log("WELCOME")
 });
+
+
+// routes for owner
+app.use('/api/owner',ownerRoute);
+
+// routes for user
+app.use('/api/user',userRoute);
+
+// routes for product
+app.use('/api/product',productRoute);
+
+
 
 
 app.listen(3000,()=>{
